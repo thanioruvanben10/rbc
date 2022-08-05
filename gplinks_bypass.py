@@ -18,7 +18,7 @@ def gplinks_bypass(url: str):
     )
     p = urlparse(url)
     final_url = f'{p.scheme}://{p.netloc}/links/go'
-
+    print(client)
     res = client.head(url)
     header_loc = res.headers['location']
     param = header_loc.split('postid=')[-1]
@@ -38,7 +38,7 @@ def gplinks_bypass(url: str):
         'referer': ref_url,
         'x-requested-with': 'XMLHttpRequest',
     }
-    print (data)
+    
     time.sleep(10)
     res = client.post(final_url, headers=h, data=data)
     try:
