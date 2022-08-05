@@ -13,7 +13,7 @@ def gplinks_bypass(url: str):
       interpreter='nodejs',
       captcha={
         'provider': '2captcha',
-        'api_key': '54f49969ee85e8b132d57910cf7bdee2'
+        'api_key': ''
       }
     )
     p = urlparse(url)
