@@ -38,6 +38,7 @@ def gplinks_bypass(url: str):
         'referer': ref_url,
         'x-requested-with': 'XMLHttpRequest',
     }
+    print (data)
     time.sleep(10)
     res = client.post(final_url, headers=h, data=data)
     try:
