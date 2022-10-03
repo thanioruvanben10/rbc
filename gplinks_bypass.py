@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 
 # eg: https://gplinks.co/XXXX
-url = ""
+url = "https://gplinks.co/ok9dK5"
 
 # =======================================
 
