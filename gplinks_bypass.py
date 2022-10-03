@@ -4,24 +4,18 @@ from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 
 # eg: https://gplinks.co/XXXX
-url = input()
+url = ""
 
 # =======================================
 
 def gplinks_bypass(url: str):
-    client = cloudscraper.create_scraper(
-      interpreter='nodejs',
-      captcha={
-        'provider': '2captcha',
-        'api_key': ''
-      }
-    )
+    client = cloudscraper.create_scraper(allow_brotli=False)
     p = urlparse(url)
     final_url = f'{p.scheme}://{p.netloc}/links/go'
-    print(client)
+
     res = client.head(url)
     header_loc = res.headers['location']
-    param = header_loc.split('postid=')[-1]
+    param = url.split('/')[-1]
     req_url = f'{p.scheme}://{p.netloc}/{param}'
 
     p = urlparse(header_loc)
@@ -38,7 +32,6 @@ def gplinks_bypass(url: str):
         'referer': ref_url,
         'x-requested-with': 'XMLHttpRequest',
     }
-    
     time.sleep(10)
     res = client.post(final_url, headers=h, data=data)
     try:
